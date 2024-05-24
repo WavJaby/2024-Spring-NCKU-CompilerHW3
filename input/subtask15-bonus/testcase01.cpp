@@ -1,14 +1,11 @@
 // Calculate Pi using the Nilakantha series
-double calculate_pi(int terms) {
-    double pi = (double)3;    // Start with the first term of the series
-    double two = (double)2;   // Cached value
-    double four = (double)4;  // Cached value
-    double one = (double)1;   // Cached value
-    bool add = true;          // Control addition or subtraction
+float calculate_pi(int terms) {
+    float pi = 3.0;   // Start with the first term of the series
+    float two = 2.0;  // Cached value
+    bool add = true;  // Control addition or subtraction
 
     for (int k = 1; k < terms; k++) {
-        double i = (two * (double)k * (two * (double)k + one) * (two * (double)k + two));
-        double term = four / i;
+        float term = (float)4 / (two * (float)k * (two * (float)k + 1.0) * (two * (float)k + two));
         if (add) {
             pi += term;
             add = false;
@@ -22,8 +19,8 @@ double calculate_pi(int terms) {
 }
 
 int main(string argv[]) {
-    int terms = 1000;  // Number of terms to sum
-    double pi = calculate_pi(terms);
+    int terms = 100;  // Number of terms to sum
+    float pi = calculate_pi(terms);
     cout << "Approximation of Pi after " << terms << " terms: " << pi << endl;
     return 0;
 }
